@@ -1,166 +1,775 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portifólio</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>SkinCare Pro - Transforme sua pele em 7 dias</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #ffffff;
+      color: #171717;
+      line-height: 1.6;
+    }
+
+    /* COLOR PALETTE */
+    :root {
+      --primary: #f43f5e;
+      --primary-dark: #be123c;
+      --primary-light: #fce7f3;
+      --primary-light-2: #fbcfe8;
+      --gray-600: #4b5563;
+      --gray-900: #171717;
+      --border-color: #e5e5e5;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #ffffff, #fce7f3, #ffffff);
+      padding: 40px 20px;
+    }
+
+    .hero-container {
+      max-width: 900px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #171717;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #4b5563;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .btn-primary {
+      background-color: #f43f5e;
+      color: white;
+      padding: 20px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      max-width: 100%;
+      width: auto;
+    }
+
+    .btn-primary:hover {
+      background-color: #be123c;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 20px;
+    }
+
+    .section-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 40px;
+      font-weight: 700;
+      color: #171717;
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: #4b5563;
+    }
+
+    /* LEARN SECTION */
+    .learn {
+      background-color: #ffffff;
+    }
+
+    .learn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .learn-item {
+      display: flex;
+      gap: 20px;
+      padding: 25px;
+      background-color: #fce7f3;
+      border-radius: 12px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .learn-item:hover {
+      background-color: #fbcfe8;
+    }
+
+    .learn-item svg {
+      width: 24px;
+      height: 24px;
+      color: #f43f5e;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .learn-item p {
+      font-size: 16px;
+      font-weight: 500;
+      color: #171717;
+    }
+
+    /* TARGET AUDIENCE */
+    .audience {
+      background: linear-gradient(to bottom, #fce7f3, #ffffff);
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .audience-item {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background-color: #ffffff;
+      border: 1px solid #fce7f3;
+      border-radius: 10px;
+    }
+
+    .audience-item svg {
+      width: 20px;
+      height: 20px;
+      color: #f43f5e;
+      flex-shrink: 0;
+    }
+
+    .audience-item p {
+      font-weight: 500;
+      color: #171717;
+    }
+
+    /* BENEFITS */
+    .benefits {
+      background-color: #ffffff;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      padding: 35px 30px;
+      background: linear-gradient(to bottom right, #fce7f3, #fbcfe8);
+      border: 1px solid #f43f5e;
+      border-radius: 15px;
+    }
+
+    .benefit-card svg {
+      width: 32px;
+      height: 32px;
+      color: #f43f5e;
+      margin-bottom: 15px;
+    }
+
+    .benefit-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #171717;
+      margin-bottom: 10px;
+    }
+
+    .benefit-card p {
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    /* CONTENT SECTION */
+    .content {
+      background: linear-gradient(to bottom, #fce7f3, #ffffff);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .content-card {
+      padding: 25px;
+      background-color: #ffffff;
+      border: 1px solid #fce7f3;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-header {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      align-items: flex-start;
+    }
+
+    .content-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background-color: #f43f5e;
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .content-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #171717;
+      margin-bottom: 8px;
+    }
+
+    .content-card p {
+      font-size: 13px;
+      color: #4b5563;
+      margin-bottom: 15px;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      background-color: #fce7f3;
+      color: #be123c;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background-color: #ffffff;
+    }
+
+    .testimonial {
+      padding: 35px;
+      background: linear-gradient(to bottom right, #fce7f3, #fbcfe8);
+      border: 1px solid #f43f5e;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    .star {
+      width: 20px;
+      height: 20px;
+      color: #f43f5e;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: #4b5563;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: #171717;
+    }
+
+    .testimonial-title {
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    /* OFFER SECTION */
+    .offer {
+      background-color: #ffffff;
+    }
+
+    .offer-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .price-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .price-original {
+      font-size: 28px;
+      color: #4b5563;
+      text-decoration: line-through;
+    }
+
+    .price-special {
+      font-size: 48px;
+      font-weight: 700;
+      color: #f43f5e;
+    }
+
+    .offer-button {
+      width: 100%;
+      padding: 25px 40px;
+      font-size: 18px;
+      font-weight: 700;
+      background-color: #f43f5e;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    .offer-button:hover {
+      background-color: #be123c;
+      transform: scale(1.02);
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #171717;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      font-size: 13px;
+      color: #cccccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-section a:hover {
+      color: #f43f5e;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333333;
+      padding-top: 20px;
+      font-size: 13px;
+      color: #999999;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section-header h2 {
+        font-size: 28px;
+      }
+
+      .section-header p {
+        font-size: 16px;
+      }
+
+      .price-original {
+        font-size: 20px;
+      }
+
+      .price-special {
+        font-size: 36px;
+      }
+
+      section {
+        padding: 50px 20px;
+      }
+
+      .price-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Apresentação -->
-  <div class="text">
-    <h1 style="font-size: 4rem; position: relative; top: 2rem">
-      Olá, eu sou o <span style="color: #8a2be2;">Diego Henrique</span>
-    </h1>
-    <p style="position: relative; top: 30px;">
-      Desenvolvedor de Software em início de carreira, apaixonado por criar soluções digitais e sempre em busca de novos conhecimentos.
-    </p>
-  </div>
-
-  <!-- Foto de perfil -->
-  <img src="diego.jpeg" width="300" height="300" class="img" alt="Diego Henrique">
-
-  <!-- Seção Projetos -->
-  <div>
-    <h2 class="secao-projeto">Projetos</h2>
-  </div>
-  
-  <div class="projetos">
-
-    <!-- Projeto 1 -->
-    <div class="caixa-video">
-      <img src="bio.png" width="600" height="600" alt="Projeto Bio">
-      
-      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 2rem; color: #A45FFF; position: relative; left: 1rem; top: 0.5px">
-        Bio Personalizada
-      </p>
-      
-      <p style="color: #EDEDED;">
-        Um projeto de uma bio personalizada, bem básica, foi meu primeiro projeto.
-        Pretendo melhorá-la em breve, haverá novidades e colocarei coisas novas que aprendi.
-      </p>
-      
-      <div class="linguagem">
-        <p class="lg">Html</p>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Transforme sua pele em 7 dias com o método SkinCare Pro</h1>
+        <p>Aprenda os segredos reais para uma pele limpa, hidratada e bonita sem gastar muito.</p>
       </div>
+      <button class="btn-primary" onclick="scrollToOffer()">Quero acessar o ebook agora</button>
+      <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop" alt="Skincare beauty products" class="hero-image">
+    </div>
+  </section>
 
-      <div class="linguagem2">
-        <p class="cst">Css</p>
+  <!-- LEARN SECTION -->
+  <section class="learn">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>O que você vai aprender</h2>
+        <p>Conteúdo completo e prático para transformar sua rotina de skincare</p>
       </div>
-      
-      <div class="botoes">
-        <a style="position: relative; left: 1rem; color: #8a2be2; text-decoration: none; top: 1rem" 
-           href="https://bioo.netlify.app/">
-          Ver o projeto
-        </a>
+      <div class="learn-list">
+        <div class="learn-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          <p>Cuidados diários essenciais para cada tipo de pele</p>
+        </div>
+        <div class="learn-item">
+          <svg fill="currentColor" viewBox="00 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          <p>Identificar seu tipo de pele corretamente</p>
+        </div>
+        <div class="learn-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          <p>Produtos essenciais para começar (sem gastar uma fortuna)</p>
+        </div>
+        <div class="learn-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          <p>Rotina perfeita para manhã e noite</p>
+        </div>
+        <div class="learn-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          <p>Erros comuns que destroem sua pele</p>
+        </div>
       </div>
     </div>
-    
-    <!-- Projeto 2 -->
-    <div class="caixa-video">
-      <img src="projeto2.png" alt="Projeto Laura">
-      
-      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 2rem; color: #A45FFF; position: relative; top: 1px">
-        Surpresa pra minha namorada
-      </p>
-      
-      <p style="font-size: 14.2px;">
-        Esse projeto foi uma surpresa para minha namorada, mas eu aproveitei para utilizar para testar minhas habilidades em HTML e CSS, é um projeto bem simples.
-      </p>
+  </section>
 
-      <div class="linguagem">
-        <p class="lg">Html</p>
+  <!-- TARGET AUDIENCE SECTION -->
+  <section class="audience">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Para quem é este ebook</h2>
+        <p>Se você se identifica com qualquer um destes, este ebook é para você</p>
       </div>
-
-      <div class="linguagem2">
-        <p class="cst">Css</p>
-      </div>
-      
-      <a style="position: relative; left: 1rem; color: #8a2be2; text-decoration: none; top: 1rem;" 
-         href="https://paraaminhalaura.netlify.app">
-        Ver o projeto
-      </a>
-    </div>
-
-  </div>
-
-  <!-- Sobre mim -->
-  <div class="titulo-sobre">
-    <h5>Sobre mim</h5>
-  </div>
-
-  <div class="caixa-sobre">
-    <div class="sobre">
-      <p>
-        Eu tenho 17 anos, tenho pouca experiência na área de programação. Sou uma pessoa que busca sempre estudar o máximo,<br>
-        sempre aprendendo uma coisa nova e testando projetos. Gosto de resolver problemas, sou muito curioso na programação,<br>
-        faço amizades fácil e busco um ambiente calmo e tranquilo para descansar.
-      </p>
-    </div>
-  </div>
-
-  <!-- Habilidades -->
-  <div class="skill">
-    <h3>Minhas habilidades</h3> 
-  </div>
-
- <div class="grade">
-
-  <!-- HTML -->
-  <div class="icone1">
-    <img src="html (1).png" alt="HTML" width="50" height="50" class="corh">
-    <div class="skill-name">HTML</div>
-    <div class="bar">
-      <div class="bar-fill" style="width: 70%;">
-        <span class="percent">70%</span>
+      <div class="audience-grid">
+        <div class="audience-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-10-4v3m6-3v3m-8.5 3h11"/></svg>
+          <p>Mulheres iniciantes em skincare</p>
+        </div>
+        <div class="audience-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-10-4v3m6-3v3m-8.5 3h11"/></svg>
+          <p>Homens que querem melhorar sua pele</p>
+        </div>
+        <div class="audience-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-10-4v3m6-3v3m-8.5 3h11"/></svg>
+          <p>Pessoas com acne e espinhas</p>
+        </div>
+        <div class="audience-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-10-4v3m6-3v3m-8.5 3h11"/></svg>
+          <p>Pessoas com manchas ou cicatrizes</p>
+        </div>
+        <div class="audience-item">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-10-4v3m6-3v3m-8.5 3h11"/></svg>
+          <p>Pele oleosa ou ressecada</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- CSS -->
-  <div class="icone1">
-    <img src="css-3 (1).png" alt="CSS" width="50" height="50" class="corh">
-    <div class="skill-name">CSS</div>
-    <div class="bar">
-      <div class="bar-fill" style="width: 60%;">
-        <span class="percent">60%</span>
+  <!-- BENEFITS SECTION -->
+  <section class="benefits">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Benefícios do método SkinCare Pro</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <h3>Melhora Visível da Pele</h3>
+          <p>Resultados reais que você vai notar nos espelhos</p>
+        </div>
+        <div class="benefit-card">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <h3>Redução de Acne</h3>
+          <p>Método comprovado para controlar e eliminar espinhas</p>
+        </div>
+        <div class="benefit-card">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <h3>Rotina Simples</h3>
+          <p>Fácil de seguir, sem complicações ou produtos caros</p>
+        </div>
+        <div class="benefit-card">
+          <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <h3>Aumento de Autoestima</h3>
+          <p>Sinta-se mais confiante com sua pele transformada</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- JavaScript -->
-  <div class="icone1">
-    <img src="java.png" alt="JavaScript" width="50" height="50" class="corh">
-    <div class="skill-name">JavaScript</div>
-    <div class="bar">
-      <div class="bar-fill" style="width: 1%;">
-        <span class="ex">1%</span>
+  <!-- CONTENT SECTION -->
+  <section class="content">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>O que você vai aprender</h2>
+        <p>6 seções completas com guias práticos e conteúdo detalhado</p>
+      </div>
+      <div class="content-grid">
+        <div class="content-card">
+          <div class="content-header">
+            <div class="content-number">01</div>
+            <div>
+              <h3>Fundamentos da Pele</h3>
+              <p>Entenda como sua pele funciona e quais são seus tipos</p>
+            </div>
+          </div>
+          <div class="tag-group">
+            <span class="tag">Estrutura da pele</span>
+            <span class="tag">Tipos de pele</span>
+            <span class="tag">pH e hidratação</span>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-header">
+            <div class="content-number">02</div>
+            <div>
+              <h3>Diagnóstico e Análise</h3>
+              <p>Identifique seus problemas específicos de pele</p>
+            </div>
+          </div>
+          <div class="tag-group">
+            <span class="tag">Auto-diagnóstico</span>
+            <span class="tag">Problemas comuns</span>
+            <span class="tag">Fatores de risco</span>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-header">
+            <div class="content-number">03</div>
+            <div>
+              <h3>Produtos Essenciais</h3>
+              <p>Quais produtos você realmente precisa (e quais evitar)</p>
+            </div>
+          </div>
+          <div class="tag-group">
+            <span class="tag">Limpador ideal</span>
+            <span class="tag">Hidratante certo</span>
+            <span class="tag">Protetor solar</span>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-header">
+            <div class="content-number">04</div>
+            <div>
+              <h3>Rotinas Completas</h3>
+              <p>Passo a passo para manhã e noite</p>
+            </div>
+          </div>
+          <div class="tag-group">
+            <span class="tag">Rotina matinal</span>
+            <span class="tag">Rotina noturna</span>
+            <span class="tag">Dicas extras</span>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-header">
+            <div class="content-number">05</div>
+            <div>
+              <h3>Tratamentos Específicos</h3>
+              <p>Soluções para acne, manchas e outros problemas</p>
+            </div>
+          </div>
+          <div class="tag-group">
+            <span class="tag">Anti-acne</span>
+            <span class="tag">Clareamento</span>
+            <span class="tag">Cicatrizes</span>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-header">
+            <div class="content-number">06</div>
+            <div>
+              <h3>Erros a Evitar</h3>
+              <p>Os hábitos que estão destruindo sua pele</p>
+            </div>
+          </div>
+          <div class="tag-group">
+            <span class="tag">Hábitos prejudiciais</span>
+            <span class="tag">Mitos de skincare</span>
+            <span class="tag">Proteção extra</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-</div>
-
-
-  <!-- Contatos -->
-   <div class="contato-titulo">
-   <h4>Contatos</h4>
-   </div>
-  <div class="contatos">
-    <div class="cor-i">
-    <a href="https://discordapp.com/users/1087375544154337300" target="_blank">
- <img src="discord.png" width="30" height="30" alt="Discord"><br></a>
-
-<a href="mailto:diegonubank53@gmail.com"
-  onclick="window.open('https://mail.google.com/mail/?view=cm&to=diegonubank53@gmail.com','_blank'); return false;">
-    <img src="mail.png" width="30" height="30" alt="E-mail"><br></a>
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Depoimentos de Resultados Reais</h2>
+        <p>Confira as transformações de quem já seguiu o método</p>
+      </div>
+      <div>
+        <div class="testimonial">
+          <div class="star-rating">
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="testimonial-text">"Nunca pensei que em apenas 3 semanas minha pele estaria assim! As espinhas diminuíram bastante e meu rosto está bem mais hidratado. O método é super fácil de seguir e não gasto muito com produtos!"</p>
+          <div class="testimonial-author">Ana Silva</div>
+          <div class="testimonial-title">São Paulo, SP</div>
+        </div>
+        <div class="testimonial">
+          <div class="star-rating">
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="testimonial-text">"Como homem, eu estava bem cético, mas após seguir as dicas do ebook minha pele mudou completamente! Menos oleosidade, menos acne. Recomendo muito, especialmente para quem como eu não conhecia nada de skincare."</p>
+          <div class="testimonial-author">Carlos Santos</div>
+          <div class="testimonial-title">Rio de Janeiro, RJ</div>
+        </div>
+        <div class="testimonial">
+          <div class="star-rating">
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="testimonial-text">"Tenho manchas há anos. Seguindo o ebook consegui diminuir bastante! A pele está mais clara e brilhante. Vale cada centavo investido aqui. Meu rosto inteiro mudou!"</p>
+          <div class="testimonial-author">Mariana Costa</div>
+          <div class="testimonial-title">Belo Horizonte, MG</div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
+  <!-- OFFER SECTION -->
+  <section class="offer" id="offer-section">
+    <div class="offer-container">
+      <div class="section-header">
+        <h2>Oferta Especial Hoje</h2>
+        <p>Acesso completo ao ebook SkinCare Pro</p>
+      </div>
+      <div class="price-container">
+        <span class="price-original">R$ 24,99</span>
+        <span class="price-special">R$ 17,99</span>
+      </div>
+      <!-- Updated button to redirect to payment link -->
+      <button class="offer-button" onclick="handlePurchase()">Quero começar agora</button>
+      <p style="color: #4b5563; font-size: 14px;">Acesso imediato ao conteúdo completo</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sobre</h3>
+        <p>SkinCare Pro é um guia completo para transformar sua rotina de skincare.</p>
+      </div>
+      <!-- Removed terms and policy links from footer -->
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <a href="mailto:contato@skincarecare.com">contato@skincarecare.com</a>
+        <a href="https://wa.me/5511999999999">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SkinCare Pro. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToOffer() {
+      const offerSection = document.getElementById('offer-section');
+      offerSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handlePurchase() {
+      window.location.href = 'https://pay.kiwify.com.br/ceGv6s6'
+
+    }
+  </script>
 </body>
 </html>
-
-
-
 
